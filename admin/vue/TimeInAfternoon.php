@@ -1,7 +1,5 @@
 <?php 
 
-<?php 
-
 require_once('../includes/script.php');  
 require_once('../session/Login.php'); 
 
@@ -64,3 +62,4 @@ $set_timezone = date_default_timezone_set("America/Asuncion");
  
 
 ?>
+
