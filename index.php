@@ -1,5 +1,5 @@
 <?php
-$timezone = 'Asia/Manila';
+$timezone = 'America/Asuncion';
 date_default_timezone_set($timezone);
 ?>
 <!doctype html>
