@@ -1,5 +1,5 @@
 <?php
-$timezone = 'Asia/Manila';
+$timezone = 'America/Asuncion';
 date_default_timezone_set($timezone);
 ?>
 <!doctype html>
@@ -24,17 +24,16 @@ date_default_timezone_set($timezone);
 										
 					<div class="">
 						<center>
-						<div>
-							<h4 class="timein">Time In Afternoon</h4>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-							<form v-on:submit.prevent="TimeInAfternoon">
-								<input id="isaacarcilla" type="text" required="true"  v-model="time_in_afternoon" class="form-control" id="employee-id" placeholder="Employee Identification" autofocus="true">
-							</form>
-							</div>						
-						</div>
-					</center>
+							<div>
+								<h4 class="timein">Time In Afternoon</h4>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+								<form v-on:submit.prevent="TimeInAfternoon">
+									<input type="text" required="true"  v-model="time_in_afternoon" class="form-control" id="employee-id" placeholder="Employee Identification" autofocus="true">
+								</form>
+								</div>						
+							</div>
 						</center>
 					</div>
 				</div>
