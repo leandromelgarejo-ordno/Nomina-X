@@ -6,7 +6,7 @@ date_default_timezone_set($timezone);
 <html lang="en" dir="ltr">
 	<head>
 		<?php require_once('admin/includes/script.php') ?>
-		<title>Profiling and Payroll Management System</title>
+		<title>Sistema de Gestión de Perfiles y Nómina</title>
 		<link rel="icon" href="favicon.ico" type="image/x-icon"/>
 		<!-- Dashboard Core -->
 		<link href="./assets/css/dashboard.css" rel="stylesheet" />
@@ -25,12 +25,12 @@ date_default_timezone_set($timezone);
 					<div class="">
 						<center>
 						<div>
-							<h4 class="timein">Time Out Afternoon</h4>
+							<h4 class="timein">Tiempo de salida Vespertina</h4>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
 							<form v-on:submit.prevent="TimeOutAfternoon">
-								<input type="text" required="true"  v-model="time_out_afternoon" class="form-control" id="employee-id" placeholder="Employee Identification" autofocus="true">
+								<input type="text" required="true"  v-model="time_out_afternoon" class="form-control" id="employee-id" placeholder="Identificacion de Empleados" autofocus="true">
 							</form>
 							</div>						
 						</div>
@@ -39,7 +39,7 @@ date_default_timezone_set($timezone);
 					</div>
 				</div>
 			</div>
-				<a href="admin" target="_blank" class="btn">Go to Dashboard Panel</a>
+				<a href="admin" target="_blank" class="btn">Panel de Control</a>
 			</div>
 		</div>
 	</div>
@@ -50,17 +50,17 @@ date_default_timezone_set($timezone);
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<!-- Moment JS -->
 	<script src="bower_components/moment/moment.js"></script>
-
-	<script src="js/model.js"></script>
+	<script src="bower_components/moment/locale/es.js"></script>
 	
 	<script type="text/javascript">
-	$(function() {
-	var interval = setInterval(function() {
-	var momentNow = moment();
-	$('#date').html(momentNow.format('dddd').substring(0,3).toUpperCase() + ' - ' + momentNow.format('MMMM DD, YYYY'));
-	$('#time').html(momentNow.format('hh:mm:ss A'));
-	}, 100);
-	});
+		$(function() {
+			moment.locale('es');
+			var interval = setInterval(function() {
+				var momentNow = moment();
+				$('#date').html(momentNow.format('dddd').substring(0,3).toUpperCase() + ' - ' + momentNow.format('D [de] MMMM, YYYY'));
+				$('#time').html(momentNow.format('hh:mm:ss A'));
+			}, 100);
+		});
 	</script>
 </body>
 </html>

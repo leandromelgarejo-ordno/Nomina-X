@@ -30,7 +30,7 @@ require_once('session/Login.php');
 
 <html lang="en" dir="ltr">
   <head>
-    <title>Profiling and Payroll Management System</title>
+    <title>Sistema de Gestión de Perfiles y Nómina</title>
   </head>
   <body >
     <div class="page" id="app">
@@ -51,7 +51,7 @@ require_once('session/Login.php');
           <div class="container">
             <div class="page-header">
               <h1 class="page-title">
-                Schedule
+                Horario
               </h1>
             </div>
             <div class="row row-cards">           
@@ -63,7 +63,7 @@ require_once('session/Login.php');
               <div class="col-12">
                 <div class="card">
                   <div class="card-header py-3">
-                    <h3 class="card-title">Employee Schedules</h3>
+                    <h3 class="card-title">Horarios de empleados</h3>
                   </div>
                   <?php require_once('modals/modal_add_schedule.php') ?>
                   <div class="card-body">
@@ -72,10 +72,10 @@ require_once('session/Login.php');
                         <thead>
                           <tr>
                             <th >ID</th>
-                            <th>employee id</th>
-                            <th >name</th>
-                            <th>Position</th>
-                            <th >schedule</th>
+                            <th>ID de empleado</th>
+                            <th >Nombre</th>
+                            <th>Puesto</th>
+                            <th >Horario</th>
                             <!-- <th>Actions</th> -->
                           </tr>
                         </thead>

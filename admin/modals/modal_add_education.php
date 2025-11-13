@@ -40,48 +40,44 @@ echo "<script>window.location.href='view.php?id=$empd'</script>";
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-      	<h5 class="modal-title">Educational Attainment</h5>
+          <h5 class="modal-title">Nivel educativo alcanzado</h5>
       </div>
       <form action="" method="post"> 
       <div class="modal-body p-lg">         
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class="form-label">Attained</label>
-                             <select  required="" name="educational" class="form-control custom-select">
-                              <option class="text-muted" value="">Select educational attainment</option>
-                              <option value="Elementary">Elementary</option>
-                              <option value="High School">High School</option>
-                              <option value="College">College</option>
-
-                            </select>
-                      </div>
-                      <div class="form-group">
-                        <label class="form-label">Year Graduated</label>
-<select required="" name="year" class="form-control custom-select">
-                              <option class="text-muted" value="">Select year graduated</option>
-                              <?php 
-                              $start_year = 1930;
-                              $current_year = date("Y", time())+1;
-
-                              $diff_bt_year = $current_year - $start_year;
-
-                              while($start_year != $current_year){
-                                $current_year--;
-                              ?>
-                                <option value="<?php echo $current_year ?>"><?php echo $current_year ?></option>
-                              <?php } ?>
-                            </select>
-                      </div> 
-                                            <div class="form-group">
-                        <label class="form-label">Degree/Honors Received</label>
-                        <input name="degree" type="text" class="form-control" required placeholder="Enter degree/honors received...">
-                      </div>    
-                    </div>               
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="form-label">Nivel alcanzado</label>
+            <select required name="educational" class="form-control custom-select">
+              <option class="text-muted" value="">Seleccione nivel educativo</option>
+              <option value="Elementary">Primaria</option>
+              <option value="High School">Secundaria</option>
+              <option value="College">Universidad</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Año de graduación</label>
+            <select required name="year" class="form-control custom-select">
+              <option class="text-muted" value="">Seleccione año de graduación</option>
+              <?php 
+                $start_year = 1930;
+                $current_year = date("Y", time())+1;
+                while($start_year != $current_year){
+                  $current_year--;
+              ?>
+                <option value="<?php echo $current_year ?>"><?php echo $current_year ?></option>
+              <?php } ?>
+            </select>
+          </div> 
+          <div class="form-group">
+            <label class="form-label">Título/Honores recibidos</label>
+            <input name="degree" type="text" class="form-control" required placeholder="Ingrese título/honores recibidos...">
+          </div>    
+        </div>               
       </div>
       <div class="modal-footer">
-        <div  style="padding-right: 12px;" >
-        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Close</button>
-        <button type="submit" name="add_educ" class="btn success p-x-md">Add Education</button>
+        <div style="padding-right: 12px;">
+          <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Cerrar</button>
+          <button type="submit" name="add_educ" class="btn success p-x-md">Agregar educación</button>
         </div>
       </div>
      </form>
@@ -103,19 +99,19 @@ function printPage2(){
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Barcode</h5>
+        <h5 class="modal-title">Código de barras</h5>
       </div>
       <form action="" method="post" > 
       <div class="modal-body p-lg"  id="printDataHolder2">         
         <center><img src="<?php echo $emp['path'] ?>">  </center> 
         <center><p ><strong><?php echo $emp['employee_id'] ?></strong></p></center>     
         <br>
-        <center><h6 class="small">Generated on <?php echo date('F m, Y', strtotime($emp['generated_on'])) ?></h6></center>      
+        <center><h6 class="small">Generado el <?php echo date('d \d\e F, Y', strtotime($emp['generated_on'])) ?></h6></center>      
       </div>
       <div class="modal-footer">
-        <div  style="padding-right: 12px;" >
-        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Close</button>
-        <button type="button" class="btn dark-white p-x-md" onclick="printPage2()">Print</button>
+        <div style="padding-right: 12px;">
+          <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn dark-white p-x-md" onclick="printPage2()">Imprimir</button>
         </div>
       </div>
      </form>

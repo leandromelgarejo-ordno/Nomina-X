@@ -31,14 +31,14 @@
                   </a>
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                     <a class="dropdown-item" href="#">
-                      <i class="dropdown-icon fe fe-user"></i> Profile
+                      <i class="dropdown-icon fe fe-user"></i> Perfil
                     </a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">
-                      <i class="dropdown-icon fe fe-help-circle"></i> Need help?
+                      <i class="dropdown-icon fe fe-help-circle"></i> Necesitas Ayuda?
                     </a>
                     <a class="dropdown-item" href="../admin/signout.php">
-                      <i class="dropdown-icon fe fe-log-out"></i> Sign out
+                      <i class="dropdown-icon fe fe-log-out"></i> Cerrar Sesión
                     </a>
                   </div>
                 </div>

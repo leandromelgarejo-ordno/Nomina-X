@@ -9,7 +9,7 @@
  class Controller{
 
 	public function SQLConnection(){
-		$connection = array("server" => "localhost", "user" => "root", "password" => "", "database" => "payroll");
+		$connection = array("server" => "localhost", "user" => "root", "password" => "mysql", "database" => "payroll");
 		
 		$connections = mysqli_connect($connection["server"], $connection["user"], $connection["password"], $connection["database"]);
 		return $connections;	

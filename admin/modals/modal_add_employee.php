@@ -69,7 +69,7 @@ if (isset($_POST['add_new'])) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">New Employee Personal Data</h5>
+        <h5 class="modal-title">Nuevo registro de datos personales del empleado</h5>
       </div>
       <div class="modal-body p-lg">
         <div class="col-md-12">
@@ -77,100 +77,96 @@ if (isset($_POST['add_new'])) {
             <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
-                  <label class="form-label">First Name</label>
-                  <input name="first" type="text" class="form-control" required placeholder="Enter first name...">
+                  <label class="form-label">Nombre</label>
+                  <input name="first" type="text" class="form-control" required placeholder="Ingrese el nombre...">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label class="form-label">Middle Name</label>
-                  <input name="middle" type="text" class="form-control" required placeholder="Enter middle name...">
+                  <label class="form-label">Segundo nombre</label>
+                  <input name="middle" type="text" class="form-control" required placeholder="Ingrese el segundo nombre...">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label class="form-label">Last Name</label>
-                  <input name="last" type="text" class="form-control" required placeholder="Enter last name...">
+                  <label class="form-label">Apellido</label>
+                  <input name="last" type="text" class="form-control" required placeholder="Ingrese el apellido...">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Address</label>
-                  <input name="address" type="text" class="form-control" required placeholder="Enter address...">
+                  <label class="form-label">Dirección</label>
+                  <input name="address" type="text" class="form-control" required placeholder="Ingrese la dirección...">
                 </div>
               </div>
               <div class="col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Email Address</label>
-                  <input name="email" type="email" class="form-control" required placeholder="Enter email address...">
+                  <label class="form-label">Correo electrónico</label>
+                  <input name="email" type="email" class="form-control" required placeholder="Ingrese el correo electrónico...">
                 </div>
               </div>
               <div class="col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Phone Number</label>
-                  <input name="phonenumber" type="number" maxlength="11" min="0" onkeypress="limitKeypress(event,this.value,11)" class="form-control" required placeholder="Enter phone number...">
+                  <label class="form-label">Número de teléfono</label>
+                  <input name="phonenumber" type="number" maxlength="11" min="0" onkeypress="limitKeypress(event,this.value,11)" class="form-control" required placeholder="Ingrese el número de teléfono...">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Desired Position</label>
-                  <select required="" name="desired_position" class="form-control custom-select">
-                    <option class="text-muted">Select Position</option>
+                  <label class="form-label">Puesto deseado</label>
+                  <select required name="desired_position" class="form-control custom-select">
+                    <option class="text-muted">Seleccione el puesto</option>
                     <?php
-                    $pos = "SELECT * FROM `position`;";
-                    $res = mysqli_query($connection, $pos);
-                    while ($row = mysqli_fetch_assoc($res)) {
-
-                      ?>
-
-                      <option value="<?php echo $row['id']  ?>"><?php echo $row['description']  ?></option>
-                    <?php } ?>
+                      $pos = "SELECT * FROM `position`;";
+                      $res = mysqli_query($connection, $pos);
+                      while ($row = mysqli_fetch_assoc($res)) {
+                        echo '<option value="'.$row['id'].'">'.$row['description'].'</option>';
+                      }
+                    ?>
                   </select>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label class="form-label">Desired Schedule</label>
-                  <select required="" name="desired_schedule" class="form-control custom-select">
-                    <option class="text-muted">Select Schedule</option>
+                  <label class="form-label">Horario deseado</label>
+                  <select required name="desired_schedule" class="form-control custom-select">
+                    <option class="text-muted">Seleccione el horario</option>
                     <?php
-                    $pos = "SELECT * FROM `schedules`;";
-                    $res = mysqli_query($connection, $pos);
-                    while ($row = mysqli_fetch_assoc($res)) {
-
-                      ?>
-
-                      <option value="<?php echo $row['id']  ?>"><?php echo $row['time_in_morning']  ?>-<?php echo $row['time_out_morning']  ?>/<?php echo $row['time_in_afternoon']  ?>-<?php echo $row['time_out_afternoon']  ?></option>
-                    <?php } ?>
+                      $pos = "SELECT * FROM `schedules`;";
+                      $res = mysqli_query($connection, $pos);
+                      while ($row = mysqli_fetch_assoc($res)) {
+                        echo '<option value="'.$row['id'].'">'.$row['time_in_morning'].'-'.$row['time_out_morning'].'/'.$row['time_in_afternoon'].'-'.$row['time_out_afternoon'].'</option>';
+                      }
+                    ?>
                   </select>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <div class="form-label">Upload Image</div>
+                  <div class="form-label">Subir imagen</div>
                   <div class="custom-file">
                     <input type="file" required class="custom-file-input" name="img_name">
-                    <label class="custom-file-label">Choose image file</label>
+                    <label class="custom-file-label">Seleccionar archivo de imagen</label>
                   </div>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label class="form-label">Birthday</label>
+                  <label class="form-label">Fecha de nacimiento</label>
                   <select required="" name="birth_month" class="form-control custom-select">
-                    <option class="text-muted" value="">Month</option>
-                    <option value="01">January</option>
-                    <option value="02">February</option>
-                    <option value="03">March</option>
-                    <option value="04">April</option>
-                    <option value="05">May</option>
-                    <option value="06">June</option>
-                    <option value="07">July</option>
-                    <option value="08">August</option>
-                    <option value="09">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
+                    <option class="text-muted" value="">Mes</option>
+                    <option value="01">Enero</option>
+                    <option value="02">Febrero</option>
+                    <option value="03">Marzo</option>
+                    <option value="04">Abril</option>
+                    <option value="05">Mayo</option>
+                    <option value="06">Junio</option>
+                    <option value="07">Julio</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
                   </select>
                 </div>
               </div>
@@ -178,7 +174,7 @@ if (isset($_POST['add_new'])) {
                 <div class="form-group">
                   <label class="form-label">&nbsp</label>
                   <select required="" name="birth_day" class="form-control custom-select">
-                    <option class="text-muted" value="">Day</option>
+                    <option class="text-muted" value="">Día</option>
                     <option value="01">1</option>
                     <option value="02">2</option>
                     <option value="03">3</option>
@@ -217,7 +213,7 @@ if (isset($_POST['add_new'])) {
                 <div class="form-group">
                   <label class="form-label">&nbsp</label>
                   <select required="" name="birth_year" class="form-control custom-select">
-                    <option class="text-muted" value="">Year</option>
+                    <option class="text-muted" value="">Año</option>
                     <?php
                     $start_year = 1930;
                     $current_year = date("Y", time()) + 1;
@@ -234,104 +230,101 @@ if (isset($_POST['add_new'])) {
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label class="form-label">Civil Status</label>
+                  <label class="form-label">Estado civil</label>
                   <select required="" name="civil_status" class="form-control custom-select">
-                    <option class="text-muted" value="">Select Civil Status</option>
-                    <option value="Single">Single</option>
-                    <option value="Married">Married</option>
-                    <option value="Separated">Separated</option>
-
+                    <option class="text-muted" value="">Seleccione estado civil</option>
+                    <option value="Single">Soltero(a)</option>
+                    <option value="Married">Casado(a)</option>
+                    <option value="Separated">Separado(a)</option>
                   </select>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label class="form-label">Sex</label>
+                  <label class="form-label">Sexo</label>
                   <select required="" name="sex" class="form-control custom-select">
-                    <option class="text-muted" value="">Select Sex</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-
-
+                    <option class="text-muted" value="">Seleccione sexo</option>
+                    <option value="Male">Masculino</option>
+                    <option value="Female">Femenino</option>
                   </select>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label class="form-label">Citizenship</label>
-                  <input name="citizenship" type="text" class="form-control" required placeholder="Enter citizenship...">
+                  <label class="form-label">Nacionalidad</label>
+                  <input name="citizenship" type="text" class="form-control" required placeholder="Ingrese la nacionalidad...">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label class="form-label">Height</label>
-                  <input name="height" type="number" class="form-control" required placeholder="Enter height e.g. 175">
+                  <label class="form-label">Estatura</label>
+                  <input name="height" type="number" class="form-control" required placeholder="Ingrese la estatura ej. 175">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Weight</label>
-                  <input name="weight" type="number" class="form-control" required placeholder="Enter weight e.g. 60">
+                  <label class="form-label">Peso</label>
+                  <input name="weight" type="number" class="form-control" required placeholder="Ingrese el peso ej. 60">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Religion</label>
-                  <input name="religion" type="text" class="form-control" required placeholder="Enter religion...">
+                  <label class="form-label">Religión</label>
+                  <input name="religion" type="text" class="form-control" required placeholder="Ingrese la religión...">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Spouse</label>
-                  <input name="spouse_fullname" type="text" class="form-control" required placeholder="Enter spouse full name...">
+                  <label class="form-label">Cónyuge</label>
+                  <input name="spouse_fullname" type="text" class="form-control" required placeholder="Ingrese el nombre completo del cónyuge...">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Occupation</label>
-                  <input name="spouse_occupation" type="text" class="form-control" required placeholder="Enter spouse occupation...">
+                  <label class="form-label">Ocupación</label>
+                  <input name="spouse_occupation" type="text" class="form-control" required placeholder="Ingrese la ocupación del cónyuge...">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Father's Name</label>
-                  <input name="father_fullname" type="text" class="form-control" required placeholder="Enter father's full name...">
+                  <label class="form-label">Nombre del padre</label>
+                  <input name="father_fullname" type="text" class="form-control" required placeholder="Ingrese el nombre completo del padre...">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Occupation</label>
-                  <input name="father_occupation" type="text" class="form-control" required placeholder="Enter father occupation...">
+                  <label class="form-label">Ocupación</label>
+                  <input name="father_occupation" type="text" class="form-control" required placeholder="Ingrese la ocupación del padre...">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Mother's Name</label>
-                  <input name="mother_fullname" type="text" class="form-control" required placeholder="Enter mother's full name...">
+                  <label class="form-label">Nombre de la madre</label>
+                  <input name="mother_fullname" type="text" class="form-control" required placeholder="Ingrese el nombre completo de la madre...">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Occupation</label>
-                  <input name="mother_occupation" type="text" class="form-control" required placeholder="Enter mother occupation...">
+                  <label class="form-label">Ocupación</label>
+                  <input name="mother_occupation" type="text" class="form-control" required placeholder="Ingrese la ocupación de la madre...">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Parent's Address</label>
-                  <input name="parent_address" type="text" class="form-control" required placeholder="Enter parent address...">
+                  <label class="form-label">Dirección de los padres</label>
+                  <input name="parent_address" type="text" class="form-control" required placeholder="Ingrese la dirección de los padres...">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Person to be contacted in case of emergency</label>
-                  <input name="emergency_name" type="text" class="form-control" required placeholder="Enter name details...">
+                  <label class="form-label">Persona de contacto en caso de emergencia</label>
+                  <input name="emergency_name" type="text" class="form-control" required placeholder="Ingrese los datos del nombre...">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <label class="form-label">His/her contact details</label>
-                  <input name="emergency_contact" type="number" maxlength="11" min="0" onkeypress="limitKeypress(event,this.value,11)" class="form-control" required placeholder="Enter contact details...">
+                  <label class="form-label">Datos de contacto de emergencia</label>
+                  <input name="emergency_contact" type="number" maxlength="11" min="0" onkeypress="limitKeypress(event,this.value,11)" class="form-control" required placeholder="Ingrese los datos de contacto...">
                 </div>
               </div>
             </div>
@@ -341,8 +334,8 @@ if (isset($_POST['add_new'])) {
       </div>
       <div class="modal-footer">
         <div style="padding-right: 12px;">
-          <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">No</button>
-          <button type="submit" name="add_new" class="btn danger p-x-md">Save</button></div>
+          <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Cancelar</button>
+          <button type="submit" name="add_new" class="btn danger p-x-md">Guardar</button></div>
       </div>
       </form>
     </div><!-- /.modal-content -->
