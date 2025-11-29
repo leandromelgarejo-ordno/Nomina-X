@@ -1,9 +1,8 @@
 <?php 
 
-require_once('../includes/script.php');  
 require_once('../session/Login.php'); 
 
-$set_timezone = date_default_timezone_set("Asia/Manila");
+$set_timezone = date_default_timezone_set("America/Asuncion");
 
  $model = new Dashboard();
  $session = new AdministratorSession();
@@ -51,7 +50,7 @@ $set_timezone = date_default_timezone_set("Asia/Manila");
     
             $insert = "UPDATE `attendance` SET `time_out_afternoon` = '$time_in' WHERE `employee_id` = '$employee_id' AND `date` = '$date';";
 
-            $query = mysqli_query($connection, $insert) or die(mysqli_error().$insert);
+            $query = mysqli_query($connection, $insert) or die(mysqli_error($connection).$insert);
 
           
             //number of hours in the morning
@@ -74,9 +73,14 @@ $set_timezone = date_default_timezone_set("Asia/Manila");
               }   
 
               $num_hr = "UPDATE `attendance` SET `num_hr_afternoon` = '$int' WHERE `employee_id` = '$employee_id' AND `date` = '$date'";
-              $update = mysqli_query($connection, $num_hr) or die(mysqli_error().$num_hr);
 
+                $update = mysqli_query($connection, $num_hr) or die(mysqli_error($connection).$num_hr);
 
- 
+        header('Content-Type: application/json');
+        if(isset($update) && $update){
+          echo json_encode(['status'=>'success','message'=>'Time out recorded']);
+        } else {
+          echo json_encode(['status'=>'error','message'=>'Failed to record time out']);
+        }
 
-?>
+        ?>

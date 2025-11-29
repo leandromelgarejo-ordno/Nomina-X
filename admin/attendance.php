@@ -1,5 +1,6 @@
 <?php
 
+date_default_timezone_set("America/Asuncion");
 require_once('includes/script.php');
 require_once('session/Login.php');
 
@@ -50,7 +51,7 @@ if ($Attendance == '1') {
 <html lang="en" dir="ltr">
 
 <head>
-  <title>Profiling and Payroll Management System</title>
+  <title>Sistema de Gestión de Perfiles y Nómina</title>
 </head>
 
 <body>
@@ -76,7 +77,7 @@ if ($Attendance == '1') {
         function printPage() {
           var divElements = document.getElementById('printDataHolder').innerHTML;
           var oldPage = document.body.innerHTML;
-          document.body.innerHTML = "<link rel='stylesheet' href='css/common.css' type='text/css' /><body class='bodytext'><div class='padding'><b style='font-size: 16px;'><p class=''>Attendance generated on <?php echo date("m/d/Y") ?> <?php echo date("G:i A") ?> by <?php echo $firstname ?> <?php echo $lastname ?></p></b></div>" + divElements + "</body>";
+          document.body.innerHTML = "<link rel='stylesheet' href='css/common.css' type='text/css' /><body class='bodytext'><div class='padding'><b style='font-size: 16px;'><p class=''>Asistencia Generada el <?php echo date("d/m/Y") ?> <?php echo date("H:i") ?> por <?php echo $firstname ?> <?php echo $lastname ?></p></b></div>" + divElements + "</body>";
           window.print();
           document.body.innerHTML = oldPage;
         }
@@ -87,7 +88,7 @@ if ($Attendance == '1') {
           <div class="page-header">
 
             <h1 class="page-title">
-              Attendance
+              Asistencia
             </h1>
           </div>
 
@@ -95,35 +96,35 @@ if ($Attendance == '1') {
             <div style="padding-left: 12px; padding-bottom: 25px;">
               <div class="dropdown  ">
                 <button type="button" style="background-color: " class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-                  <i style="padding-top: 10px;" class="fe fe-clock mr-2"></i> Add Attendance</button>
+                  <i style="padding-top: 10px;" class="fe fe-clock mr-2"></i> Agregar asistencia</button>
 
                 <div style="padding-top: 10px;" class="dropdown-menu">
-                  <button data-toggle="modal" data-target="#modal-add-attendance-in" class="dropdown-item ">Add Time In</button>
-                  <button data-toggle="modal" data-target="#modal-add-attendance-out" class="dropdown-item ">Add Time Out</button>
+                  <button data-toggle="modal" data-target="#modal-add-attendance-in" class="dropdown-item ">Agregar hora de entrada</button>
+                  <button data-toggle="modal" data-target="#modal-add-attendance-out" class="dropdown-item ">Agregar hora de salida</button>
                 </div>
 
               </div>
               <div style="padding-left: 12px;" class="dropdown  ">
                 <button type="button" style="background-color: " data-toggle="modal" data-target="#modal-filter-attendance" class="btn btn-secondary">
-                  <i style="padding-top: 10px;" class="fe fe-filter mr-2"></i> Filter Date</button>
+                  <i style="padding-top: 10px;" class="fe fe-filter mr-2"></i> Filtrar por fecha</button>
 
 
               </div>
               <div style="padding-left: 12px;" class="dropdown  ">
                 <button type="button" style="background-color: " class="btn btn-secondary" onclick="printPage()">
-                  <i style="padding-top: 10px;" class="fe fe-printer mr-2"></i> Print Attendance</button>
+                  <i style="padding-top: 10px;" class="fe fe-printer mr-2"></i> Imprimir asistencia</button>
 
 
               </div>
               <div style="padding-left: 12px;" class="dropdown  ">
                 <a target="_blank" href="../index.php"><button type="button" style="background-color: " class="btn btn-secondary">
-                    <i style="padding-top: 10px;" class="fe fe-grid mr-2"></i> Use Barcode</button></a>
+                    <i style="padding-top: 10px;" class="fe fe-grid mr-2"></i> Usar código de barras</button></a>
 
 
               </div>
               <div style="padding-left: 420px; float: right" class="dropdown ">
                 <button data-toggle="modal" data-target="#modal-show-attendance" type="button" style="background-color: " class="btn btn-secondary ">
-                  <i style="padding-top: 10px;" class="fe fe-eye mr-2"></i> Show All</button>
+                  <i style="padding-top: 10px;" class="fe fe-eye mr-2"></i> Mostrar todo</button>
 
 
               </div>
@@ -131,7 +132,7 @@ if ($Attendance == '1') {
             <div class="col-12">
               <div class="card">
                 <div class="card-header py-3">
-                  <h3 class="card-title">Attendance Table for <b><?php echo date('F d, Y', strtotime($today)) ?></b></h3>
+                  <h3 class="card-title">Tabla de asistencia para <b><?php echo date('F d, Y', strtotime($today)) ?></b></h3>
                 </div>
                 <?php require_once('modals/modal_add_attendance.php') ?>
                 <div class="card-body">
@@ -141,15 +142,15 @@ if ($Attendance == '1') {
                         <tr>
 
 
-                          <th>Employee name</th>
-                          <th>Timein AM</th>
-                          <th>Timeout AM</th>
-                          <th>Total Time</th>
-                          <th>Timein PM</th>
-                          <th>Timeout PM</th>
-                          <th>Total Time</th>
-                          <th>date</th>
-                          <th>action</th>
+                          <th>Nombre del empleado</th>
+                          <th>Hora de entrada (AM)</th>
+                          <th>Hora de salida (AM)</th>
+                          <th>Tiempo total</th>
+                          <th>Hora de entrada (PM)</th>
+                          <th>Hora de salida (PM)</th>
+                          <th>Tiempo total</th>
+                          <th>Fecha</th>
+                          <th>Acción</th>
 
                         </tr>
                       </thead>
@@ -179,10 +180,10 @@ if ($Attendance == '1') {
                             </td>
                             <td><?php echo date('h:i A', strtotime($row['time_out_afternoon'])) ?></td>
                             <td class="text"><?php echo round($row['num_hr_afternoon'], 2) ?> HRS</td>
-                            <td><a class="text-inherit"><?php echo date('M d, Y', strtotime($row['date'])) ?></a></td>
+                            <td><a class="text-inherit"><?php echo date('d M, Y', strtotime($row['date'])) ?></a></td>
                             <td>
                               <!--    <button class="btn btn-success btn-sm">Edit</button> -->
-                              <button class="btn btn-success btn-sm " data-toggle="modal" data-target="#edit-time-<?php echo $row['attendance_id'] ?>">Edit</i></button>
+                              <button class="btn btn-success btn-sm " data-toggle="modal" data-target="#edit-time-<?php echo $row['attendance_id'] ?>">Editar</i></button>
 
                             </td>
 
@@ -193,31 +194,31 @@ if ($Attendance == '1') {
                             <div class="modal-dialog" id="animate">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title">Edit Time</h5>
+                                  <h5 class="modal-title">Editar hora</h5>
                                 </div>
                                 <form method="post" action="time.php?id=<?php echo $row['attendance_id'] ?>">
                                 <div class="modal-body text p-lg">
                                  
                                   <div style="padding-top: 12px;" class="form-group">
-                                    <label class="form-label">Timein Morning</label>
+                                    <label class="form-label">Hora de entrada (AM)</label>
                                     <div class="bootstrap-timepicker">
                                       <input required="true" type="text"  autofocus="true"  class="form-control timepicker" name="time_in_am">
                                     </div>
                                   </div>
                                   <div style="padding-top: 12px;" class="form-group">
-                                    <label class="form-label">Timeout Morning</label>
+                                    <label class="form-label">Hora de salida (AM)</label>
                                     <div class="bootstrap-timepicker">
                                       <input required="true" type="text" class="form-control timepicker" name="time_out_am">
                                     </div>
                                   </div>
                                   <div style="padding-top: 12px;" class="form-group">
-                                    <label class="form-label">Timein Afternoon</label>
+                                    <label class="form-label">Hora de entrada (PM)</label>
                                     <div class="bootstrap-timepicker">
                                       <input required="true" type="text" class="form-control timepicker" name="time_in_pm">
                                     </div>
                                   </div>
                                   <div style="padding-top: 12px;" class="form-group">
-                                    <label class="form-label">Timeout Afternoon</label>
+                                    <label class="form-label">Hora de salida (PM)</label>
                                     <div class="bootstrap-timepicker">
                                       <input required="true" type="text" class="form-control timepicker" name="time_out_pm">
                                     </div>
@@ -225,7 +226,7 @@ if ($Attendance == '1') {
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">No</button>
-                                  <button type="submit" name="edit_time" class="btn danger p-x-md">Yes</button>
+                                  <button type="submit" name="edit_time" class="btn danger p-x-md">Si</button>
                                 </div>
                                 </form>
                               </div><!-- /.modal-content -->

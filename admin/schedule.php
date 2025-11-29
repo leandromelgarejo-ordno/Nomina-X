@@ -43,7 +43,7 @@ require_once('session/Login.php');
 
 <html lang="en" dir="ltr">
   <head>
-    <title>Profiling and Payroll Management System</title>
+    <title>Sistema de Gestión de Perfiles y Nómina</title>
   </head>
   <body >
     <div class="page" id="app">
@@ -65,19 +65,19 @@ require_once('session/Login.php');
             <?php echo $stat ?>
             <div class="page-header">
               <h1 class="page-title">
-                Schedule
+                Horario
               </h1>
             </div>
             <div class="row row-cards">           
               <div style="padding-left: 12px; padding-bottom: 25px;">
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-add-schedule">
-                   <i class="fe fe-plus mr-2"></i> Add Schedule
+                   <i class="fe fe-plus mr-2"></i> Agregar horario
                 </button>
               </div>                                       
               <div class="col-12">
                 <div class="card">
                   <div class="card-header py-3">
-                    <h3 class="card-title">Schedules</h3>
+                    <h3 class="card-title">Horarios</h3>
                   </div>
                   <?php require_once('modals/modal_add_schedule.php') ?>
                   <div class="card-body">
@@ -86,12 +86,12 @@ require_once('session/Login.php');
                         <thead>
                           <tr>
                            
-                            <th>Schedule ID</th>
-                            <th >TIME IN MORNING</th>
-                            <th >TIME OUT MORNING</th>
-                            <th >TIME IN AFTernoon</th>
-                            <th >TIME OUT AFTernoon</th>
-                            <th>Actions</th>
+                            <th>Horario ID</th>
+                            <th >Hora de entrada (AM)</th>
+                            <th >Hora de salida (AM)</th>
+                            <th >Hora de entrada (PM)</th>
+                            <th >Hora de salida (PM)</th>
+                            <th>Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -112,7 +112,7 @@ require_once('session/Login.php');
                             </td>
                              <td >
                              
-                             <button class="btn btn-warning btn-sm " data-toggle="modal" data-target="#delete-<?php echo $row['schedule_id'] ?>">Delete</button>
+                             <button class="btn btn-warning btn-sm " data-toggle="modal" data-target="#delete-<?php echo $row['schedule_id'] ?>">Eliminar</button>
                             </td>
                           
                           </tr>
@@ -121,15 +121,15 @@ require_once('session/Login.php');
                                 <div class="modal-dialog" id="animate">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title">Delete</h5>
+                                      <h5 class="modal-title">Eliminar</h5>
                                     </div>
                                     <div class="modal-body text-center p-lg">
-                                      <p>Are you sure to execute this action?</p>
-                                      <p style="font-size: 25px;"><b>Schedule Number <?php echo $row['schedule_id'] ?></b></p>
+                                      <p>Estás seguro de ejecutar esta acción?</p>
+                                      <p style="font-size: 25px;"><b>Número de horario <?php echo $row['schedule_id'] ?></b></p>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">No</button>
-                                      <a href="delete/schedule.php?id=<?php echo $row['schedule_id'] ?>"><button type="button" class="btn danger p-x-md">Yes</button></a>
+                                      <a href="delete/schedule.php?id=<?php echo $row['schedule_id'] ?>"><button type="button" class="btn danger p-x-md">Si</button></a>
                                     </div>
                                   </div><!-- /.modal-content -->
                                 </div>

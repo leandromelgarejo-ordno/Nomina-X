@@ -1,9 +1,8 @@
 <?php 
 
-require_once('../includes/script.php');  
 require_once('../session/Login.php'); 
 
-$set_timezone = date_default_timezone_set("Asia/Manila");
+$set_timezone = date_default_timezone_set("America/Asuncion");
 
  $model = new Dashboard();
  $session = new AdministratorSession();
@@ -57,8 +56,13 @@ $set_timezone = date_default_timezone_set("Asia/Manila");
 
               $insert = "UPDATE `attendance` SET `time_in_afternoon` = '$time_in', `status_afternoon` = '$logstatus' WHERE `employee_id` = '$employee_id' AND `date` = '$date';";
 
-              $query = mysqli_query($connection, $insert) or die(mysqli_error().$insert);
+              $query = mysqli_query($connection, $insert) or die(mysqli_error($connection).$insert);
 
- 
+   header('Content-Type: application/json');
+   if($query){
+      echo json_encode(['status'=>'success','message'=>'Time in recorded']);
+   } else {
+      echo json_encode(['status'=>'error','message'=>'Failed to record time in']);
+   }
 
-?>
+   ?>

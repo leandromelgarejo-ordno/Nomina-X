@@ -1,9 +1,8 @@
 <?php 
 
-require_once('../includes/script.php');  
 require_once('../session/Login.php'); 
 
-$set_timezone = date_default_timezone_set("Asia/Manila");
+$set_timezone = date_default_timezone_set("America/Asuncion");
 
  $model = new Dashboard();
  $session = new AdministratorSession();
@@ -73,8 +72,15 @@ $set_timezone = date_default_timezone_set("Asia/Manila");
 
 	$insertAttendance = "INSERT INTO `attendance` (`employee_id`, `attendance_id`, `date`, `time_in_morning`, `time_out_morning`, `time_in_afternoon`, `time_out_afternoon`, `status_morning`, `status_afternoon`, `num_hr_morning`, `num_hr_afternoon`, `month`, `year`) VALUES ('$employee_id', '$id', '$date', '$time_in', null, null, null, '$logstatus', null, null, null, '$month', '$year');";
 
-	$query = mysqli_query($connection, $insertAttendance) or die(mysqli_error().$insertAttendance);
+      $query = mysqli_query($connection, $insertAttendance) or die(mysqli_error($connection).$insertAttendance);
 
- }	
+   }
 
-?>
+   header('Content-Type: application/json');
+   if(isset($query) && $query){
+      echo json_encode(['status'=>'success','message'=>'Time in recorded']);
+   } else {
+      echo json_encode(['status'=>'error','message'=>'Failed to record time in']);
+   }
+
+   ?>

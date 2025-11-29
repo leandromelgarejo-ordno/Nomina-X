@@ -15,7 +15,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />    
     <link rel="icon" href="./favicon.ico" type="image/x-icon"/> 
     <script src="scripts/vue.js"></script>
-    <title>Profiling and Payroll Management System</title>
+    <title>Sistema de Gestión de Perfiles y Nómina</title>
   </head>
   <body>
     <div class="page" id="app">
@@ -28,21 +28,21 @@
               </div>
               <form class="card" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <div class="card-body p-6">
-                  <div class="card-title">Login to your account</div>
+                  <div class="card-title">Inicia sesión en tu cuenta</div>
                   <?php echo $session->Validate() ?>
                   <div class="form-group">
-                    <label class="form-label">Username</label>
+                    <label class="form-label">Nombre de usuario</label>
                     <input type="text" class="form-control login" id="username" name="username" aria-describedby="emailHelp" placeholder="Enter username" v-model="election" data-toggle="popover" data-content="Username is required" data-placement="left">
                   </div>
                   <div class="form-group">
                     <label class="form-label">
-                      Password
+                      Contraseña
                       <!--<a href="" class="float-right small">Forgot password?</a>-->
                     </label>
                     <input type="password" class="form-control login" id="password" name="password" placeholder="Enter password" v-model="election" data-toggle="popover" data-content="Password is required" data-placement="left">
                   </div>
                   <div class="form-footer">
-                    <button type="submit" name="login" class="btn btn-primary btn-block">Log in</button>
+                    <button type="submit" name="login" class="btn btn-primary btn-block">Iniciar sesión</button>
                   </div>
                 </div>
               </form>

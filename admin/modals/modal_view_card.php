@@ -36,31 +36,52 @@ if (isset($_POST['add_deploy'])) {
 ?>
 
 <script type="text/javascript">
-function printPage3(){
+function printPage3() {
     var divElements = document.getElementById('printDataHolder3').innerHTML;
-    var oldPage = document.body.innerHTML;
-    document.body.innerHTML="<link rel='stylesheet' href='css/common.css' type='text/css' /><body class='bodytext'><div class='padding'><b style='font-size: 16px;'><p class=''></p></b></div>"+divElements+"</body>";
-    window.print();
-    document.body.innerHTML = oldPage;
-    }
+
+    // Abrir una ventana nueva para imprimir
+    var printWindow = window.open('', '', 'height=600,width=800');
+    printWindow.document.write('<html><head><title>Imprimir Carnet</title>');
+    printWindow.document.write('<link rel="stylesheet" href="css/common.css" type="text/css" />');
+    printWindow.document.write('</head><body>');
+    printWindow.document.write(divElements);
+    printWindow.document.write('</body></html>');
+
+    printWindow.document.close(); // Necesario para IE y algunos navegadores
+    printWindow.focus();
+    printWindow.print();
+    printWindow.close();
+}
+
+
+    window.onafterprint = function() {
+        $('#modal-view-card').modal('handleUpdate');
+    };
+
+    // Otra forma: volver a enganchar el evento click después de imprimir
+    window.addEventListener('afterprint', function () {
+        $('[data-dismiss="modal"]').off().on('click', function () {
+            $('#modal-view-card').modal('hide');
+        });
+    });
 </script>   
 
 <div id="modal-view-card" class="modal" data-backdrop="true">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Employee ID Card</h5>
+                <h5 class="modal-title">Carnet de identificación del empleado</h5>
             </div>
             <form action="" method="post">
                 <div class="modal-body p-lg" id="printDataHolder3">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <center><label style="padding-top: 15px; padding-bottom:1px"  class="form-label">PRECIOUS BROS CONSTRUCTION<p style="padding-top: 0px;" class="-label">Calatagan Tibang, Virac, Catanduanes</p></label></center>
+                            <center><label style="padding-top: 15px; padding-bottom:1px"  class="form-label">Alca Consultora<p style="padding-top: 0px;" class="-label">Hernandarias Área 6</p></label></center>
                             <center><img height="120" width="120" src="../image/<?php echo $emp['photo'] ?>"></center>
                             <br><center><p><?php echo $emp['fullname'] ?><br><?php echo $emp['address'] ?><br><?php echo $emp['description'] ?><br><?php echo $emp['phonenumber'] ?></p></center>
                             <center><img src="<?php echo $emp['path'] ?>">  </center> 
                             
-                            <center><br><small style="padding-top: 20px">Person to be contacted in case of emergency,<br> <?php echo($emp['emergency_name']) ?> (<?php echo $emp['emergency_contact'] ?>)</small>
+                            <center><br><small style="padding-top: 20px">Persona a contactar en caso de emergencia<br> <?php echo($emp['emergency_name']) ?> (<?php echo $emp['emergency_contact'] ?>)</small>
                             </center>
                         </div>
 
@@ -68,8 +89,8 @@ function printPage3(){
                 </div>
                 <div class="modal-footer">
                     <div style="padding-right: 12px;">
-                        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn success p-x-md" onclick="printPage3()">Print</button>
+                        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Cerrar<span style="display:none;">Close</span></button>
+                        <button type="submit" class="btn success p-x-md" onclick="printPage3()">Imprimir</button>
                     </div>
                 </div>
             </form>

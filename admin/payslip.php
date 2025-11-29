@@ -50,7 +50,7 @@ $myId = $row['id'];
 <!doctype html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Profiling and Payroll Management System</title>
+    <title>Sistema de Gestión de Perfiles y Nómina</title>
   </head>
   <body class="">
     <div class="page" id="app">
@@ -71,12 +71,12 @@ $myId = $row['id'];
           <div class="container">
             <div class="page-header">
               <h1 class="page-title">
-                <a href="home.php" class="text-primary">Dashboard</a> <i style="font-size: 20px;" class="fe fe-chevron-right"></i> Payslip
+                <a href="home.php" class="text-primary">Panel de control</a> <i style="font-size: 20px;" class="fe fe-chevron-right"></i> Recibo de pago
               </h1>
             </div>
               <div style="padding-left: 0; padding-bottom: 25px;" class="dropdown">
                 <button type="button" class="btn btn-secondary  " onclick="printPage()">
-                   <i class="fe fe-printer mr-2"></i> Print Payslip
+                   <i class="fe fe-printer mr-2"></i> Imprimir recibo de pago
                 </button>
                 <div class="dropdown-menu">
                 </div>
@@ -88,7 +88,7 @@ $myId = $row['id'];
               function printPage(){
                   var divElements = document.getElementById('printDataHolder').innerHTML;
                   var oldPage = document.body.innerHTML;
-                  document.body.innerHTML="<link rel='stylesheet' href='css/common.css' type='text/css' /><body class='bodytext'><div class='padding'><b style='font-size: 16px;'><p class=''>Payslip generated on <?php echo date("m/d/Y") ?> <?php echo date("G:i A") ?> by <?php echo $firstname ?> <?php echo $lastname ?></p></b></div>"+divElements+"</body>";
+                  document.body.innerHTML="<link rel='stylesheet' href='css/common.css' type='text/css' /><body class='bodytext'><div class='padding'><b style='font-size: 16px;'><p class=''>Recibo de pago generado el <?php echo date("d/n/Y") ?> <?php echo date("G:i A") ?> por <?php echo $firstname ?> <?php echo $lastname ?></p></b></div>"+divElements+"</body>";
                   window.print();
                   document.body.innerHTML = oldPage;
                   }
@@ -156,58 +156,58 @@ $myId = $row['id'];
                 <div class="table-responsive push">
                   <table class="table table-bordered table-hover">
                     <tr>
-                      <th colspan="8">Precious Bros Construction Payslip #<?php echo $number ?></th>
+                      <th colspan="8">Recibo de pago de Alca Consultora #<?php echo $number ?></th>
 
                     </tr>
                     <tr>
                       <td colspan="4">
-                        <p class="font-w600 mb-1">Pay Period</p>
+                        <p class="font-w600 mb-1"><P>Período de pago</P></p>
                    </td>
                       <td colspan="4" class="text-right"><b><?php echo date('F d, Y', strtotime($from)) ?> <b>-</b> <?php echo date('F d, Y', strtotime($to)) ?></b></td>
                     </tr>
                     <tr>
                       <td colspan="4">
-                        <p class="font-w600 mb-1">Employee Name</p>
+                        <p class="font-w600 mb-1">Nombre del empleado</p>
                    </td>
                       <td colspan="4" class="text-right"><b><?php echo $row['fullname'] ?></b></td>
                     </tr>
                     <tr>
                       <td colspan="4">
-                        <p class="font-w600 mb-1">Employee Number</p>
+                        <p class="font-w600 mb-1">Número de empleado</p>
                    </td>
                       <td colspan="4" class="text-right"><b>ID <?php echo $row['employee_id'] ?></b></td>
                     </tr>
                     <tr>
-                      <td colspan="4" class="font-w600 text-right">Rate</td>
+                      <td colspan="4" class="font-w600 text-right">Tarifa</td>
                       <td class="text-right"><?php echo $row['rate'] ?>.00</td>
                     </tr>
                     <tr>
-                      <td colspan="4" class="font-w600 text-right">Total Hours</td>
-                      <td class="text-right"><?php echo  round($total_hr, 2) ?> Hours</td>
+                      <td colspan="4" class="font-w600 text-right">Total de horas</td>
+                      <td class="text-right"><?php echo  round($total_hr, 2) ?> Horas</td>
                     </tr>
                     <tr>
-                      <td colspan="4" class="font-w600 text-right">Gross Income</td>
-                      <td class="text-right"><?php echo  number_format($gross) ?> PHP</td>
+                      <td colspan="4" class="font-w600 text-right">Ingreso bruto</td>
+                      <td class="text-right"><?php echo  number_format($gross) ?> GS</td>
                     </tr>
                     <tr>
-                      <td colspan="4" class="font-w600 text-right">Cash Advance</td>
-                      <td class="text-right">-<?php echo  number_format($cashadvance) ?> PHP</td>
+                      <td colspan="4" class="font-w600 text-right">Anticipo en efectivo</td>
+                      <td class="text-right">-<?php echo  number_format($cashadvance) ?> GS</td>
                     </tr>  
                     <tr>
-                      <td colspan="4" class="font-w600 text-right">Overtime</td>
-                      <td class="text-right"><?php echo  number_format($ot) ?> PHP</td>
+                      <td colspan="4" class="font-w600 text-right">Tiempo extra</td>
+                      <td class="text-right"><?php echo  number_format($ot) ?> GS</td>
                     </tr>   
                                         <tr>
-                      <td colspan="4" class="font-w600 text-right">Net Income (Gross Income - Cash Advance)</td>
-                      <td class="text-right"><b><?php echo  number_format($net_pay) ?> PHP</b> </td>
+                      <td colspan="4" class="font-w600 text-right">Ingreso neto (Ingreso bruto - Anticipo en efectivo)</td>
+                      <td class="text-right"><b><?php echo  number_format($net_pay) ?> GS</b> </td>
                     </tr>                                    
                     <tr color="dark">
-                      <td colspan="4" class="font-weight-bold text-uppercase text-right">NET PAY (Net Income + Overtime)</td>
-                      <td class="text-right"><strong><?php echo  number_format($net_pay + $ot) ?>  PHP </strong></td>
+                      <td colspan="4" class="font-weight-bold text-uppercase text-right">PAGO NETO (Ingreso neto + Horas extra)</td>
+                      <td class="text-right"><strong><?php echo  number_format($net_pay + $ot) ?>  GS </strong></td>
                     </tr>
                   </table>
                 </div>
-                <p class="text-muted text-center">Payslip generated on <?php echo date("m/d/Y") ?> <?php echo date("H:i A") ?> by <?php echo $firstname ?> <?php echo $lastname ?></p>
+                <p class="text-muted text-center">Recibo de pago generado el <?php echo date("d/m/Y") ?> <?php echo date("H:i A") ?> por <?php echo $firstname ?> <?php echo $lastname ?></p>
               </div> 
 
                           <?php } ?>                   

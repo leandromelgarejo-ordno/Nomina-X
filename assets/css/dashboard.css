@@ -13484,6 +13484,21 @@ Card alert
   margin-left: 0;
 }
 
+.btn-entrada {
+    background-color: #E21D24;
+    border-color: #E21D24;
+    color: white;
+}
+
+.btn-salida {
+    background-color: #000000;
+    border-color: #000000;
+    color: white;
+}
+
+
+
+
 .dropdown-icon {
   color: #9aa0ac;
   margin-right: .5rem;

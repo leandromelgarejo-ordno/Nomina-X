@@ -51,67 +51,60 @@ echo "<script>window.location.href='schedule.php'</script>";
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-      	<h5 class="modal-title">New Schedule</h5>
+          <h5 class="modal-title">Nuevo horario</h5>
       </div>
       <form action="" method="post"> 
       <div class="modal-body p-lg">         
-                    <div class="row">
-                       <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-label">Morning Schedule</label>
-                             <select  required="true" name="time_in_morning" class="form-control custom-select">
-                              <option class="text-muted" value="">Select Time In</option>
-                              <option value="07:00">07:00 AM</option>
-                              <option value="07:30">07:30 AM</option>
-                              <option value="08:00">08:00 AM</option>
-
-
-                            </select>
-                      </div>
-                    </div>
-                     <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-label">&nbsp</label>
-                             <select  required="true" name="time_out_morning" class="form-control custom-select">
-                              <option class="text-muted" value="">Select Time Out</option>
-                              <option value="11:00">11:00 AM</option>
-                              <option value="11:30">11:30 AM</option>
-                              <option value="12:00">12:00 PM</option>
-
-                            </select>
-                      </div>     
-                    </div>
-                      <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-label">Afternoon Schedule</label>
-                             <select  required="true" name="time_in_afternoon" class="form-control custom-select">
-                              <option class="text-muted" value="">Select Time In</option>
-                              <option value="01:00">01:00 PM</option>
-
-
-                            </select>
-                      </div>
-                    </div>
-                     <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-label">&nbsp</label>
-                             <select  required="true" name="time_out_afternoon" class="form-control custom-select">
-                              <option class="text-muted" value="">Select Time Out</option>
-                              <option value="05:00">05:00 PM</option>
-
-                            </select>
-                      </div>     
-                    </div>
-                    </div>               
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label">Horario matutino</label>
+              <select required name="time_in_morning" class="form-control custom-select">
+                <option class="text-muted" value="">Seleccione entrada</option>
+                <option value="07:00">07:00 AM</option>
+                <option value="07:30">07:30 AM</option>
+                <option value="08:00">08:00 AM</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label">&nbsp</label>
+              <select required name="time_out_morning" class="form-control custom-select">
+                <option class="text-muted" value="">Seleccione salida</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="11:30">11:30 AM</option>
+                <option value="12:00">12:00 PM</option>
+              </select>
+            </div>     
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label">Horario vespertino</label>
+              <select required name="time_in_afternoon" class="form-control custom-select">
+                <option class="text-muted" value="">Seleccione entrada</option>
+                <option value="01:00">01:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label">&nbsp</label>
+              <select required name="time_out_afternoon" class="form-control custom-select">
+                <option class="text-muted" value="">Seleccione salida</option>
+                <option value="05:00">05:00 PM</option>
+              </select>
+            </div>     
+          </div>
+        </div>               
       </div>
       <div class="modal-footer">
-        <div  >
-        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Close</button>
-        <button type="submit" name="add_sched" class="btn success p-x-md">Add Schedule</button>
+        <div>
+          <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Cerrar</button>
+          <button type="submit" name="add_sched" class="btn success p-x-md">Agregar horario</button>
         </div>
       </div>
      </form>
     </div><!-- /.modal-content -->
   </div>
 </div>
-

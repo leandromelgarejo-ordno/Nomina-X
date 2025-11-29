@@ -80,7 +80,7 @@ if(isset($_POST['editProfile'])){
 <!doctype html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Profiling and Payroll Management System</title>
+    <title>Sistema de Gestión de Perfiles y Nómina</title>
   </head>
   <body class="" v-on:click="Reload">
     <div class="page" id="app">
@@ -103,7 +103,7 @@ if(isset($_POST['editProfile'])){
             <?php echo $stat ?>
             <div class="page-header">
               <h1 class="page-title">
-                <a href="profile.php" class="text-primary">Profiling</a> <i style="font-size: 20px;" class="fe fe-chevron-right"></i> Edit Profile
+                <a href="profile.php" class="text-primary">elaboración de perfiles</a> <i style="font-size: 20px;" class="fe fe-chevron-right"></i> Edit Profile
               </h1>
             </div>
             
@@ -113,30 +113,30 @@ if(isset($_POST['editProfile'])){
                <div class="">
               <form class="" method="post" action="">
                 <div class="card-body">
-                  <h3 class="card-title"><strong>Personal Data</strong></h3>
+                  <h3 class="card-title"><strong>Datos Personales</strong></h3>
                   <div class="row">
 
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Fullname</label>
+                        <label class="form-label">Nombre completo</label>
                         <input type="text" required="" name="fullname" class="form-control" value="<?php echo $emp['fullname'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Address</label>
+                        <label class="form-label">Dirección</label>
                         <input type="text" required="" name="address" class="form-control" value="<?php echo $emp['address'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Email Address</label>
+                        <label class="form-label">Dirección de correo electrónico</label>
                         <input type="email" required="" name="email" class="form-control" value="<?php echo $emp['email'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Phone Number</label>
+                        <label class="form-label">Número de teléfono</label>
                         <input type="text" class="form-control" required="" name="phonenumber"  value="<?php echo $emp['phonenumber'] ?>">
                       </div>
                     </div>
@@ -154,31 +154,31 @@ if(isset($_POST['editProfile'])){
                     </div> -->
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Civil Status</label>
+                        <label class="form-label">Estado civil</label>
                         <input type="text" class="form-control" required="" name="civil_status"  value="<?php echo $emp['civil_status'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Sex</label>
+                        <label class="form-label">Sexo</label>
                         <input type="text" class="form-control" required="" name="sex" value="<?php echo $emp['sex'] ?>">
                       </div>
                     </div> 
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Citizenship</label>
+                        <label class="form-label">Nacionalidad</label>
                         <input type="text" class="form-control" required="" name="citizenship" value="<?php echo $emp['citizenship'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Height</label>
+                        <label class="form-label">Altura</label>
                         <input type="text" class="form-control" required="" name="height" value="<?php echo $emp['height'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Weight</label>
+                        <label class="form-label">Peso</label>
                         <input type="text" class="form-control" required="" name="weight" value="<?php echo $emp['weight'] ?>">
                       </div>
                     </div>
@@ -190,55 +190,55 @@ if(isset($_POST['editProfile'])){
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Spouse</label>
+                        <label class="form-label">Cónyuge</label>
                         <input type="text" class="form-control" required="" name="spouse" value="<?php echo $emp['spouse'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Occupation</label>
+                        <label class="form-label">Ocupación</label>
                         <input type="text" class="form-control" required="" name="spouse_occupation" value="<?php echo $emp['spouse_occupation'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Father's Name</label>
+                        <label class="form-label">Nombre del padre</label>
                         <input type="text" class="form-control" required="" name="father" value="<?php echo $emp['father'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Occupation</label>
+                        <label class="form-label">Ocupación</label>
                         <input type="text" class="form-control" required="" name="father_occupation" value="<?php echo $emp['father_occupation'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Mother's Name</label>
+                        <label class="form-label">Nombre de la madre</label>
                         <input type="text" class="form-control" required="" name="mother" value="<?php echo $emp['mother'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Occupation</label>
+                        <label class="form-label">Ocupación</label>
                         <input type="text" class="form-control" required="" name="mother_occupation" value="<?php echo $emp['mother_occupation'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Parent's Address</label>
+                        <label class="form-label">Dirección de los padres</label>
                         <input type="text" class="form-control" required="" name="parent_address"  value="<?php echo $emp['parent_address'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Person to be contacted in case of emergency</label>
+                        <label class="form-label">Persona de contacto en caso de emergencia</label>
                         <input type="text" class="form-control" required="" name="emergency_name" value="<?php echo $emp['emergency_name'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group mb-0">
-                        <label class="form-label">His/her contact details</label>
+                        <label class="form-label">Sus datos de contacto</label>
                         <input rows="1" class="form-control" required="" name="emergency_contact" value="<?php echo $emp['emergency_contact'] ?>"></input>
                       </div>
                     </div>
@@ -246,8 +246,8 @@ if(isset($_POST['editProfile'])){
                 </div>
                 <div class="card-footer text-right">
                   <div class="d-flex">
-                    <a href="profile.php" class="btn btn-link">Cancel</a>
-                    <button type="submit" name="editProfile" class="btn btn-primary ml-auto">Save</button>
+                    <a href="profile.php" class="btn btn-link">Cancelar</a>
+                    <button type="submit" name="editProfile" class="btn btn-primary ml-auto">Guardar</button>
                   </div>
                 </div>
               </form>

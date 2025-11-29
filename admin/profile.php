@@ -41,7 +41,7 @@ require_once('session/Login.php');
 <!doctype html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Profiling and Payroll Management System</title>
+    <title>Sistema de Gestión de Perfiles y Nómina</title>
   </head>
   <body class="" v-on:click="Reload">
     <div class="page" id="app">
@@ -63,20 +63,20 @@ require_once('session/Login.php');
             <?php echo $stat ?>
             <div class="page-header">
               <h1 class="page-title">
-                Profiling
+                Perfiles
               </h1>
             </div>
             <div class="row row-cards">           
               <div style="padding-left: 12px; padding-bottom: 25px;">
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-add-employee">
-                   <i class="fe fe-plus mr-2"></i> Add Employee
+                   <i class="fe fe-plus mr-2"></i> Agregar empleado
                 </button>
               </div>    
                                     
               <div class="col-12">
                 <div class="card">
                   <div class="card-header py-3">
-                    <h3 class="card-title">Employee Profiling</h3>
+                    <h3 class="card-title">Perfil del empleado</h3>
                   </div>
                   <?php require_once('modals/modal_add_employee.php') ?>
                   <div class="card-body">
@@ -85,12 +85,12 @@ require_once('session/Login.php');
                         <thead>
                           <tr>
                             <th class="w-1" >ID</th>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Address</th>
+                            <th>Nombre</th>
+                            <th>Puesto</th>
+                            <th>Dirección</th>
                             <!-- <th>Civil Status</th> -->
-                            <th>Schedule</th>
-                            <th>Actions</th>
+                            <th>Horario</th>
+                            <th>Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -116,8 +116,8 @@ require_once('session/Login.php');
                               <?php echo date('H:i A', strtotime($row['time_in_morning'])) ?> - <?php echo date('H:i A', strtotime($row['time_out_morning'])) ?> / <?php echo date('H:i', strtotime($row['time_in_afternoon'])) ?> PM - <?php echo date('H:i', strtotime($row['time_out_afternoon'])) ?> PM
                             </td>
                             <td >
-                              <a href="view.php?id=<?php echo $row['employee_id'] ?>"><button class="btn btn-success btn-sm">View</button></a>
-                               <a href="edit.php?id=<?php echo $row['employee_id'] ?>"><button class="btn btn-primary btn-sm">Edit</button></a>
+                              <a href="view.php?id=<?php echo $row['employee_id'] ?>"><button class="btn btn-success btn-sm">Ver</button></a>
+                               <a href="edit.php?id=<?php echo $row['employee_id'] ?>"><button class="btn btn-primary btn-sm">Editar</button></a>
 
                             </td>
                             <?php } ?>

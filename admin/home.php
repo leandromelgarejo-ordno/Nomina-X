@@ -11,6 +11,26 @@ require_once('session/Login.php');
     header("location:index.php?utm_campaign=expired");
  }
 
+
+$from = $from ?? null;
+$to   = $to ?? null;
+
+// Tu traducción:
+$dias = [
+    'Mon' => 'lun',
+    'Tue' => 'mar',
+    'Wed' => 'mié',
+    'Thu' => 'jue',
+    'Fri' => 'vie',
+    'Sat' => 'sáb',
+    'Sun' => 'dom'
+];
+
+$fromDay = $dias[date('D', strtotime($from))];
+$toDay   = $dias[date('D', strtotime($to))];
+
+
+
  $model = new Dashboard();
  $password = $_SESSION['official_password'];
  $username = $_SESSION['official_username'];
@@ -50,7 +70,7 @@ if($type == "Timekeeper"){
 <!doctype html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Profiling and Payroll Management System</title>
+    <title>Sistema de Gestión de Perfiles y Nómina</title>
   </head>
   <body class="">
     <div class="page" id="app">
@@ -71,7 +91,7 @@ if($type == "Timekeeper"){
           <div class="container">
             <div class="page-header">
               <h1 class="page-title">
-                Payroll Dashboard
+                Panel de control de nómina
               </h1>
             </div>
             <div class="row row-cards">
@@ -172,14 +192,14 @@ if($type == "Timekeeper"){
               </div> -->
               <div style="padding-left: 12px; padding-bottom: 25px;" class="">
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-filter-date">
-                   <i class="fe fe-filter mr-2"></i> Filter Payroll
+                   <i class="fe fe-filter mr-2"></i> Filtrar nómina
                 </button>
                 <div class="dropdown-menu">
                 </div>
               </div>    
               <div style="padding-left: 12px; padding-bottom: 25px;" class="dropdown">
                 <button type="button" class="btn btn-secondary  " onclick="printPage()">
-                   <i class="fe fe-list mr-2"></i> Print Payroll
+                   <i class="fe fe-list mr-2"></i> Imprimir nómina
                 </button>
                 <div class="dropdown-menu">
                 </div>
@@ -190,7 +210,7 @@ if($type == "Timekeeper"){
 function printPage(){
     var divElements = document.getElementById('printDataHolder').innerHTML;
     var oldPage = document.body.innerHTML;
-    document.body.innerHTML="<link rel='stylesheet' href='css/common.css' type='text/css' /><body class='bodytext'><div class='padding'><b style='font-size: 16px;'><p class=''>Payroll generated on <?php echo date("m/d/Y") ?> <?php echo date("G:i A") ?> by <?php echo $firstname ?> <?php echo $lastname ?></p></b></div>"+divElements+"</body>";
+    document.body.innerHTML="<link rel='stylesheet' href='css/common.css' type='text/css' /><body class='bodytext'><div class='padding'><b style='font-size: 16px;'><p class=''>Payroll generated on <?php echo date("d/m/Y") ?> <?php echo date("G:i A") ?> by <?php echo $firstname ?> <?php echo $lastname ?></p></b></div>"+divElements+"</body>";
     window.print();
     document.body.innerHTML = oldPage;
     }
@@ -199,7 +219,7 @@ function printPage(){
                 
                 <div class="card">
                   <div class="card-header py-3">
-                    <h3 class="card-title">Payroll From <b><?php echo date('M d, Y', strtotime($from)) ?>&nbsp(<?php echo date('D', strtotime($from)) ?>) </b>To <b><?php echo date('M d, Y', strtotime($to)) ?>&nbsp(<?php echo date('D', strtotime($to)) ?>)</b></h3>
+                    <h3 class="card-title">Nómina desde <b><?php echo date('d M., Y', strtotime($from)) ?> (<?php echo $fromDay ?>)</b>Hasta <b><?php echo date('d M., Y', strtotime($to)) ?> (<?php echo $toDay ?>)</b></h3>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -207,16 +227,16 @@ function printPage(){
                         <table class="table table-hovered" width="100%" cellspacing="0">
                         <thead>
                           <tr>
-                            <th>No.</th>
-                            <th class="w-1">EID</th>
-                            <th>Employee Name</th>
+                            <th>N°</th>
+                            <th class="w-1">ID</th>
+                            <th>Nombre del empleado</th>
                            <!--  <th>Position</th> -->
-                            <th>Rate Per Day</th>
-                            <th>Gross Income (PHP)</th>                          
-                            <th>Cash Advance (PHP)</th>
-                            <th>Total Hours</th>
-                            <th>Net Income (PHP)</th>
-                            <th>Payslip</th>
+                            <th>Tarifa por día</th>
+                            <th>Ingreso bruto (GS)</th>                          
+                            <th>Anticipo en efectivo (GS)</th>
+                            <th>Total de horas</th>
+                            <th>Ingreso neto (GS)</th>
+                            <th>Recibo de sueldo</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -263,7 +283,7 @@ function printPage(){
                             <td>
                               -<?php echo  number_format($cashadvance) ?> 
                             </td>
-                            <td><?php echo  round($total_hr, 2) ?> Hours</td>
+                            <td><?php echo  round($total_hr, 2) ?> Horas</td>
                             <td>
                               <strong><?php echo  number_format($net_pay) ?> </strong>
                             <!-- </td>
@@ -276,7 +296,7 @@ function printPage(){
                             <div class="item-action dropdown">
                               <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-menu"></i></a>
                               <div class="dropdown-menu dropdown-menu-right">
-                                <a href="payslip.php?id=<?php echo $row['employee_id'] ?>" class="dropdown-item"><i class="dropdown-icon fe fe-eye"></i> View Payslip</a>
+                                <a href="payslip.php?id=<?php echo $row['employee_id'] ?>" class="dropdown-item"><i class="dropdown-icon fe fe-eye"></i> Ver boleta de pago</a>
                               </div>
                             </div>
                           </td>

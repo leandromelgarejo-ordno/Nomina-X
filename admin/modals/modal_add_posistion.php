@@ -31,29 +31,28 @@ echo "<script>window.location.href='position.php'</script>";
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-      	<h5 class="modal-title">New Position</h5>
+          <h5 class="modal-title">Nuevo puesto</h5>
       </div>
       <form action="" method="post"> 
       <div class="modal-body p-lg">         
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class="form-label">Position Title</label>
-                        <input type="text" required="true" class="form-control" name="position-title" placeholder="Position...">
-                      </div>
-                      <div class="form-group">
-                        <label class="form-label">Rate Per Hour</label>
-                        <input type="number" required="true" class="form-control" name="rate" placeholder="Rate...">
-                      </div>     
-                    </div>               
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="form-label">Nombre del puesto</label>
+            <input type="text" required="true" class="form-control" name="position-title" placeholder="Puesto...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tarifa por hora</label>
+            <input type="number" required="true" class="form-control" name="rate" placeholder="Tarifa...">
+          </div>     
+        </div>               
       </div>
       <div class="modal-footer">
-        <div  style="padding-right: 12px;" >
-        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Close</button>
-        <button type="submit" name="add" class="btn success p-x-md">Add Position</button>
+        <div style="padding-right: 12px;">
+          <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Cerrar</button>
+          <button type="submit" name="add" class="btn success p-x-md">Agregar puesto</button>
         </div>
       </div>
      </form>
     </div><!-- /.modal-content -->
   </div>
 </div>
-

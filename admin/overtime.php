@@ -44,7 +44,7 @@ require_once('session/Login.php');
 
 <html lang="en" dir="ltr">
   <head>
-    <title>Profiling and Payroll Management System</title>
+    <title>Sistema de Gestión de Perfiles y Nómina</title>
   </head>
   <body >
     <div class="page" id="app">
@@ -66,19 +66,19 @@ require_once('session/Login.php');
             <?php echo $stat ?>
             <div class="page-header">
               <h1 class="page-title">
-                Overtime
+                Horas extra
               </h1>
             </div>
             <div class="row row-cards">           
               <div style="padding-left: 12px; padding-bottom: 25px;">
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-add-overtime">
-                   <i class="fe fe-plus mr-2"></i> Add Overtime
+                   <i class="fe fe-plus mr-2"></i> Agregar horas extra
                 </button>
               </div>                                       
               <div class="col-12">
                 <div class="card">
                   <div class="card-header py-3">
-                    <h3 class="card-title">Overtime Table</h3>
+                    <h3 class="card-title">Tabla de horas extra</h3>
                   </div>
                   <?php require_once('modals/modal_add_overtime.php') ?>
                   <div class="card-body">
@@ -86,15 +86,15 @@ require_once('session/Login.php');
                       <table class="table table-hovered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                           <tr>
-                            <th>No.</th>
-                            <th>Overtime ID</th>
-                            <th >Employee ID</th>
-                            <th >Employee name</th>
-                            <th >Number of hours</th>
-                            <th>Rate</th>
-                            <th>Gross</th>
-                            <th>DATE</th>
-                            <th>Actions</th>
+                            <th>N°</th>
+                            <th>ID de horas extra</th>
+                            <th >ID de empleado</th>
+                            <th >Nombre del empleado</th>
+                            <th >Número de horas</th>
+                            <th>Tarifa</th>
+                            <th>Bruto</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -109,16 +109,16 @@ require_once('session/Login.php');
                             <td ><span class="text-muted"><?php echo $row['overtime_id'] ?></span></td>
                             <td ><a class="text-primary"><?php echo $row['empid'] ?></a></td>
                             <td ><a class="text-inherit"><?php echo $row['fullname'] ?></a></td>
-                            <td ><a class="text-inherit"><?php echo round($row['hours'], 1) ?> Hours</a></td>
+                            <td ><a class="text-inherit"><?php echo round($row['hours'], 1) ?> Horas</a></td>
 
                             <td >
-                              <?php echo number_format($row['rate_hour']) ?> PHP
+                              <?php echo number_format($row['rate_hour']) ?> GS
                             </td>
-                            <td ><strong><?php $gross = number_format($row['rate_hour']) * round($row['hours'], 1)   ?> <?php echo number_format($gross) ?> PHP</strong></td>
+                            <td ><strong><?php $gross = number_format($row['rate_hour']) * round($row['hours'], 1)   ?> <?php echo number_format($gross) ?> GS</strong></td>
                             <td ><a class="text-inherit"><?php echo date('F d, Y', strtotime($row['date_overtime'])) ?></a></td>
                              <td >
                              
-                              <button class="btn btn-warning btn-sm " data-toggle="modal" data-target="#delete-<?php echo $row['overtime_id'] ?>">Delete</button>
+                              <button class="btn btn-warning btn-sm " data-toggle="modal" data-target="#delete-<?php echo $row['overtime_id'] ?>">Eliminar</button>
                             </td>                        
                           </tr>
 
@@ -127,15 +127,15 @@ require_once('session/Login.php');
                                 <div class="modal-dialog" id="animate">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title">Delete</h5>
+                                      <h5 class="modal-title">Eliminar</h5>
                                     </div>
                                     <div class="modal-body text-center p-lg">
-                                      <p>Are you sure to execute this action?</p>
-                                      <p style="font-size: 25px;"><b>Overtime Number <?php echo $row['overtime_id'] ?></b></p>
+                                      <p>Estás seguro de ejecutar esta acción?</p>
+                                      <p style="font-size: 25px;"><b>Número de horas extra <?php echo $row['overtime_id'] ?></b></p>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">No</button>
-                                      <a href="delete/overtime.php?id=<?php echo $row['overtime_id'] ?>"><button type="button" class="btn danger p-x-md">Yes</button></a>
+                                      <a href="delete/overtime.php?id=<?php echo $row['overtime_id'] ?>"><button type="button" class="btn danger p-x-md">Si</button></a>
                                     </div>
                                   </div><!-- /.modal-content -->
                                 </div>

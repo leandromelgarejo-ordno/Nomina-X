@@ -49,7 +49,7 @@ $emp = mysqli_fetch_assoc($result);
 <!doctype html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Profiling and Payroll Management System</title>
+    <title>Sistema de Gestión de Perfiles y Nómina</title>
   </head>
   <body class="" v-on:click="Reload">
     <div class="page" id="app">
@@ -80,46 +80,46 @@ function printPage(){
             <?php echo $stat ?>
             <div class="page-header">
               <h1 class="page-title">
-                <a href="profile.php" class="text-primary">Profiling</a> <i style="font-size: 20px;" class="fe fe-chevron-right"></i> Profile
+                <a href="profile.php" class="text-primary">Creación de perfil</a> <i style="font-size: 20px;" class="fe fe-chevron-right"></i> Profile
               </h1>
             </div>
             <div class="row row-cards">           
               <div style="padding-left: 12px; padding-bottom: 25px;">
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-add-education">
-                   <i class="fe fe-book-open mr-2"></i> Add Education
+                   <i class="fe fe-book-open mr-2"></i> Agregar educación
                 </button>
               </div>
              <div style="padding-left: 12px; padding-bottom: 25px;">
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-add-deployment">
-                   <i class="fe fe-map-pin mr-2"></i> Add Deployment
+                   <i class="fe fe-map-pin mr-2"></i> Agregar asignación
                 </button>
               </div>              
               <div style="padding-left: 12px; padding-bottom: 25px;">
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-view-barcode">
-                   <i class="fe fe-eye mr-2"></i> View Barcode
+                   <i class="fe fe-eye mr-2"></i> Ver código de barras
                 </button>
               </div>  
               <?php if($emp['bool_gen'] == 0){ ?>
               <div style="padding-left: 12px; padding-bottom: 25px;">
                 <a href="generate.php?id=<?php echo $emid ?>"  class="btn btn-secondary" >
-                   <i class="fe fe-code mr-2"></i> Generate Barcode
+                   <i class="fe fe-code mr-2"></i> Generar código de barras
                 </a>
               </div>  
               <?php } else { ?> 
               <div style="padding-left: 12px; padding-bottom: 25px;">
                 <button disabled href="generate.php?id=<?php echo $emid ?>"  class="btn btn-secondary" >
-                   <i class="fe fe-code mr-2"></i> Generate Barcode
+                   <i class="fe fe-code mr-2"></i> Generar código de barras
                 </button>
               </div>
               <?php } ?>             
               <div style="padding-left: 12px; float: right; padding-bottom: 25px;">
                 <button type="button" class="btn btn-secondary" onclick="printPage()">
-                   <i class="fe fe-printer mr-2"></i> Print Profile
+                   <i class="fe fe-printer mr-2"></i> Imprimir perfil
                 </button>
               </div> 
               <div style="padding-left: 12px; float: right; padding-bottom: 25px;">
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-view-card">
-                   <i class="fe fe-user mr-2"></i> View ID
+                   <i class="fe fe-user mr-2"></i> Ver identificación
                 </button>
               </div> 
               <?php require_once('modals/modal_add_deployment.php') ?>        
@@ -130,168 +130,168 @@ function printPage(){
                <div class="">
               <form class="">
                 <div class="card-body" id="printDataHolder">
-                  <h3 class="card-title"><strong>Personal Data</strong></h3>
+                  <h3 class="card-title"><strong>Datos personales</strong></h3>
                   <center><img height="120" width="120" src="../image/<?php echo $emp['photo'] ?>"></center><br><br>
                   <div class="row">
 
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Fullname</label>
+                        <label class="form-label">Nombre completo</label>
                         <input type="text" class="form-control" readonly="" placeholder="" value="<?php echo $emp['fullname'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Address</label>
+                        <label class="form-label">Dirección</label>
                         <input type="text" class="form-control" readonly="" placeholder="Username" value="<?php echo $emp['address'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Email Address</label>
+                        <label class="form-label">Correo electrónico</label>
                         <input type="email" class="form-control" readonly="" value="<?php echo $emp['email'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Phone Number</label>
+                        <label class="form-label">Número de teléfono</label>
                         <input type="text" class="form-control" readonly="" placeholder="Company" value="<?php echo $emp['phonenumber'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Birthday</label>
+                        <label class="form-label">Fecha de nacimiento</label>
                         <input type="text" class="form-control" readonly="" placeholder="Last Name" value="<?php echo date('F d, Y', strtotime($emp['birthdate'])) ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Position</label>
+                        <label class="form-label">Cargo</label>
                         <input type="text" class="form-control" readonly="" placeholder="Home Address" value="<?php echo $emp['description'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Schedule</label>
+                        <label class="form-label">Horario</label>
                         <input type="text" class="form-control" readonly="" placeholder=" " value="<?php echo date('H:i A', strtotime($emp['time_in_morning'])) ?> - <?php echo date('H:i A', strtotime($emp['time_out_morning'])) ?> / <?php echo date('H:i', strtotime($emp['time_in_afternoon'])) ?> PM - <?php echo date('H:i', strtotime($emp['time_out_afternoon'])) ?> PM">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Registered</label>
+                        <label class="form-label">Registrado</label>
                         <input type="text" class="form-control" placeholder=" " readonly="" value="<?php echo date('F, d Y', strtotime($emp['created_on'])) ?>">
                       </div>
                     </div>                    
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Employee ID</label>
+                        <label class="form-label"> ID Empleado</label>
                         <input type="text" class="form-control" readonly placeholder=" " value="<?php echo $emid?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Civil Status</label>
+                        <label class="form-label">Estado</label>
                         <input type="text" class="form-control" readonly="" placeholder=" " value="<?php echo $emp['civil_status'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Sex</label>
+                        <label class="form-label">Sexo</label>
                         <input type="text" class="form-control" readonly="" placeholder=" " value="<?php echo $emp['sex'] ?>">
                       </div>
                     </div> 
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Citizenship</label>
+                        <label class="form-label">Nacionalidad</label>
                         <input type="text" class="form-control" readonly="" placeholder=" " value="<?php echo $emp['citizenship'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Height</label>
+                        <label class="form-label">Altura</label>
                         <input type="text" class="form-control" readonly="" placeholder=" " value="<?php echo $emp['height'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Weight</label>
+                        <label class="form-label">Peso</label>
                         <input type="text" class="form-control" readonly="" placeholder=" " value="<?php echo $emp['weight'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Religion</label>
+                        <label class="form-label">Religión</label>
                         <input type="text" class="form-control" readonly="" placeholder=" " value="<?php echo $emp['religion'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group ">
-                        <label class="form-label">Project Name</label>
+                        <label class="form-label">Nombre del proyecto</label>
                         <input rows="1" readonly="" class="form-control"  value="<?php echo $emp['project_name'] ?>"></input>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Project/Site Location</label>
+                        <label class="form-label">Ubicación del proyecto/sitio</label>
                         <input rows="1" readonly="" class="form-control"  value="<?php echo $emp['site_location'] ?>"></input>
                       </div>
                     </div>                     
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Spouse</label>
+                        <label class="form-label">Cónyuge</label>
                         <input type="text" class="form-control" readonly="" placeholder=" " value="<?php echo $emp['spouse'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Occupation</label>
+                        <label class="form-label">Ocupación</label>
                         <input type="text" class="form-control" readonly="" placeholder=" " value="<?php echo $emp['spouse_occupation'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Father's Name</label>
+                        <label class="form-label">Nombre del padre</label>
                         <input type="text" class="form-control" readonly="" placeholder=" " value="<?php echo $emp['father'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Occupation</label>
+                        <label class="form-label">Ocupación</label>
                         <input type="text" class="form-control" readonly="" placeholder=" " value="<?php echo $emp['father_occupation'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Mother's Name</label>
+                        <label class="form-label">Nombre de la Madre</label>
                         <input type="text" class="form-control" readonly="" placeholder=" " value="<?php echo $emp['mother'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Occupation</label>
+                        <label class="form-label">Ocupación</label>
                         <input type="text" readonly="" class="form-control" placeholder=" " value="<?php echo $emp['mother_occupation'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Parent's Address</label>
+                        <label class="form-label">Dirección de los padres</label>
                         <input type="text" readonly="" class="form-control" placeholder=" " value="<?php echo $emp['parent_address'] ?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-label">Person to be contacted in case of emergency</label>
+                        <label class="form-label">Persona a contactar en caso de emergencia</label>
                         <input type="text" readonly="" class="form-control" placeholder=" " value="<?php echo $emp['emergency_name'] ?>">
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group mb-0">
-                        <label class="form-label">His/her contact details</label>
+                        <label class="form-label">Datos de contacto</label>
                         <input rows="1" readonly="" class="form-control"  value="<?php echo $emp['emergency_contact'] ?>"></input>
                       </div>
                     </div>                   
                   </div><br><br>
-                  <h3 class="card-title"><strong>Educational Attainment</strong></h3>
+                  <h3 class="card-title"><strong>Nivel educativo</strong></h3>
                   <div class="row">
                     <?php $edu = "SELECT * FROM `education` WHERE `eid` = $emid ORDER BY `id` ASC;";
                           $thisQ = mysqli_query($connection, $edu);
@@ -299,19 +299,19 @@ function printPage(){
                      ?>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Attainment</label>
+                        <label class="form-label">Logro</label>
                         <input type="text" class="form-control" readonly="" placeholder="" value="<?php echo $emp['attained'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Year Graduated</label>
+                        <label class="form-label">Año de graduación</label>
                         <input type="text" class="form-control" readonly="" placeholder="Username" value="<?php echo $emp['year_graduated'] ?>">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-label">Degree/Honors</label>
+                        <label class="form-label">Título/Honores</label>
                         <input type="email" class="form-control" readonly="" value="<?php echo $emp['degree_received'] ?>">
                       </div>
                     </div>

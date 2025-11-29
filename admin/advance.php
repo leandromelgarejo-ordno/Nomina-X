@@ -43,7 +43,7 @@ require_once('session/Login.php');
 <!doctype html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Profiling and Payroll Management System</title>
+    <title>Sistema de Gestión de Perfiles y Nómina</title>
   </head>
   <body >
     <div class="page" id="app">
@@ -65,19 +65,19 @@ require_once('session/Login.php');
             <?php echo $stat ?>
             <div class="page-header">
               <h1 class="page-title">
-                Cash Advance
+                Adelanto de efectivo
               </h1>
             </div>
             <div class="row row-cards">           
               <div style="padding-left: 12px; padding-bottom: 25px;">
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-add-advance">
-                   <i class="fe fe-plus mr-2"></i> Add Cash Advance
+                   <i class="fe fe-plus mr-2"></i> Agregar adelanto de efectivo
                 </button>
               </div>                                       
               <div class="col-12">
                 <div class="card">
                   <div class="card-header py-3">
-                    <h3 class="card-title">Employee Cash Advance</h3>
+                    <h3 class="card-title">Adelanto de efectivo del empleado</h3>
                   </div>
                   <?php require_once('modals/modal_add_advance.php') ?>
                   <div class="card-body">
@@ -85,13 +85,13 @@ require_once('session/Login.php');
                       <table class="table table-hovered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                           <tr>
-                           	<th>No.</th>
-                            <th>CASH ID</th>
-                            <th >EMPloyee ID</th>
-                            <th >NAME</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                            <th >Actions</th>
+                           	<th>N°</th>
+                            <th>ID de efectivo</th>
+                            <th >ID del empleado</th>
+                            <th >Nombre</th>
+                            <th>Monto</th>
+                            <th>Fecha</th>
+                            <th >Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -110,12 +110,12 @@ require_once('session/Login.php');
                             <td ><a class="text-primary"><?php echo $row['employee_id'] ?></a></td>
                             <td ><a class="text-inherit"><?php echo $row['fullname'] ?></a></td>
                             <td >
-                              <?php echo number_format($row['amount']) ?> PHP
+                              <?php echo number_format($row['amount']) ?> GS
                             </td>
                             <td ><a class="text-inherit"><?php echo date('F d, Y', strtotime($row['date_advance'])) ?></a></td>
                              <td >
                       
-                              <button class="btn btn-warning btn-sm " data-toggle="modal" data-target="#delete-<?php echo $row['cash_id'] ?>">Delete</button>
+                              <button class="btn btn-warning btn-sm " data-toggle="modal" data-target="#delete-<?php echo $row['cash_id'] ?>">Eliminar</button>
 
                             </td>
                           
@@ -126,18 +126,18 @@ require_once('session/Login.php');
                                 <div class="modal-dialog" id="animate">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title">Edit</h5>
+                                      <h5 class="modal-title">Modificar</h5>
                                     </div>
                                     <div class="modal-body  p-lg">
                                      <form method="post" action="">
                                      <div class="col-12" style="padding-bottom: 15px;">
-                                        <label class="form-label">Cash Amount</label>
-                                        <input type="number" class="form-control" name="amount" placeholder="Edit cash amount of <?php echo $row['amount'] ?> PHP">
+                                        <label class="form-label">Monto en efectivo</label>
+                                        <input type="number" class="form-control" name="amount" placeholder="Edit cash amount of <?php echo $row['amount'] ?> GS">
                                       </div>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">No</button>
-                                      <a href="delete/advance.php?uid=<?php echo $row['cash_id'] ?>"><button type="submit" name="edit" class="btn danger p-x-md">Yes</button></a>
+                                      <a href="delete/advance.php?uid=<?php echo $row['cash_id'] ?>"><button type="submit" name="edit" class="btn danger p-x-md">si</button></a>
                                     </form>
                                     </div>
                                   </div><!-- /.modal-content -->
@@ -150,15 +150,15 @@ require_once('session/Login.php');
                                 <div class="modal-dialog" id="animate">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title">Delete</h5>
+                                      <h5 class="modal-title">Eliminar</h5>
                                     </div>
                                     <div class="modal-body text-center p-lg">
-                                      <p>Are you sure to execute this action?</p>
-                                      <p style="font-size: 25px;"><b>Cash Number <?php echo $row['cash_id'] ?></b></p>
+                                      <p>Estás seguro de ejecutar esta acción?</p>
+                                      <p style="font-size: 25px;"><b>Número de efectivo <?php echo $row['cash_id'] ?></b></p>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">No</button>
-                                      <a href="delete/advance.php?id=<?php echo $row['cash_id'] ?>"><button type="button" class="btn danger p-x-md">Yes</button></a>
+                                      <a href="delete/advance.php?id=<?php echo $row['cash_id'] ?>"><button type="button" class="btn danger p-x-md">si</button></a>
                                     </div>
                                   </div><!-- /.modal-content -->
                                 </div>

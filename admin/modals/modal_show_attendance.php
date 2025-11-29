@@ -37,32 +37,32 @@ if(isset($_GET['showall'])){
   <div class="modal-dialog modal-lg" >
     <div class="modal-content">
       <div class="modal-header">
-      	<h5 style="padding-top: 8px" class="modal-title">Attendance From <?php echo $thisMonth.' '.$thisYear ?></h5>
+      	<h5 style="padding-top: 8px" class="modal-title">Asistencia desde <?php echo $thisMonth.' '.$thisYear ?></h5>
              <form action="" method="post">
                    <div class="row">
                     <div class=" col-md-7" >
                         
                           <select  required="" name="overtime_month" class="form-control custom-select">
-                              <option class="text-muted" value="">Month</option>
-                              <option value="January">January</option>
-                              <option value="February">February</option>
-                              <option value="March">March</option>
-                              <option value="April">April</option>
-                              <option value="May">May</option>
-                              <option value="June">June</option>
-                              <option value="July">July</option>
-                              <option value="August">August</option>
-                              <option value="September">September</option>
-                              <option value="October">October</option>
-                              <option value="November">November</option>
-                              <option value="December">December</option>
+                              <option class="text-muted" value="">Mes</option>
+                              <option value="January">Enero</option>
+                              <option value="February">Febrero</option>
+                              <option value="March">Marzo</option>
+                              <option value="April">Abril</option>
+                              <option value="May">Mayo</option>
+                              <option value="June">Junio</option>
+                              <option value="July">Julio</option>
+                              <option value="August">Agosto</option>
+                              <option value="September">Septiembre</option>
+                              <option value="October">Octubre</option>
+                              <option value="November">Noviembre</option>
+                              <option value="December">Diciembre</option>
                             </select>
                       </div> 
 
                      <div  class="col-md-5">
                        
                               <select  required="" name="overtime_year" class="form-control custom-select">
-                              <option class="text-muted" value="">Year</option>
+                              <option class="text-muted" value="">año</option>
                               <?php 
                               $start_year = 2015;
                               $current_year = date("Y", time())+1;
@@ -86,14 +86,14 @@ if(isset($_GET['showall'])){
                           <tr>
 
                     
-                            <th >Employee name</th>
-                            <th >Timein AM</th>
-                            <th >Timeout AM</th>
+                            <th >Nombre del Empleado</th>
+                            <th >Hora de Entrada AM</th>
+                            <th >Hora de Salida AM</th>
                             
-                            <th >Timein PM</th>
-                            <th >Timeout PM</th>
-                            <th>Total Time</th>
-                            <th>date</th>
+                            <th >Hora de Entrada PM</th>
+                            <th >Hora de Salida PM</th>
+                            <th>Tiempo Total</th>
+                            <th>Fecha</th>
    
                           </tr>
                         </thead>
@@ -125,7 +125,7 @@ if(isset($_GET['showall'])){
                             </td>
                             <td ><?php echo date('h:i A', strtotime($row['time_out_afternoon'])) ?></td>
                         <td><?php echo round($total, 2) ?> Hours</td>
-                  <td class="text"><?php echo date('M d, Y', strtotime($row['date'])) ?></td>
+                  <td class="text"><?php echo date('d M, Y', strtotime($row['date'])) ?></td>
                           
                           </tr>
                           <?php } ?>
@@ -138,8 +138,8 @@ if(isset($_GET['showall'])){
       </div>
       <div class="modal-footer">
         <div  style="padding-right: 12px;" >
-        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Close</button>
-        <button type="submit" name="applydate" class="btn success p-x-md">Apply</button>
+        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Cerrar</button>
+        <button type="submit" name="applydate" class="btn success p-x-md">Aplicar</button>
         </div>
       </div>
      </form>

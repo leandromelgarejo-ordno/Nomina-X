@@ -34,15 +34,15 @@ echo "<script>window.location.href='advance.php'</script>";
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-      	<h5 class="modal-title">New Cash Advance</h5>
+      	<h5 class="modal-title">Nuevo Adelanto de Efectivo</h5>
       </div>
       <form action="" method="post"> 
       <div class="modal-body p-lg">         
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label class="form-label">Employee</label>
+                        <label class="form-label">Empleado</label>
                         <select required name="employee" class="form-control">
-                              <option value="" class="text-muted">Select Employee</option>
+                              <option value="" class="text-muted">Seleccionar Empleado</option>
 
                               <?php 
                               $pos = "SELECT `id`, `fullname` FROM `employees`;";
@@ -56,8 +56,8 @@ echo "<script>window.location.href='advance.php'</script>";
                           </select>
                       </div>
                       <div class="form-group">
-                        <label class="form-label">Cash Amount</label>
-                        <input type="number" required="true" class="form-control" name="amount" maxlength="4" min="0" onkeypress="limitKeypress(event,this.value,8)" placeholder="Enter amount...">
+                        <label class="form-label">Monto en Efectivo</label>
+                        <input type="number" required="true" class="form-control" name="amount" maxlength="4" min="0" onkeypress="limitKeypress(event,this.value,8)" placeholder="Ingrese el Monto...">
                       </div>     
                     </div>         
                     <script type="text/javascript">
@@ -70,8 +70,8 @@ echo "<script>window.location.href='advance.php'</script>";
       </div>
       <div class="modal-footer">
         <div  style="padding-right: 12px;" >
-        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Close</button>
-        <button type="submit" name="add" class="btn success p-x-md">Add Cash Advance</button>
+        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">Cerrar</button>
+        <button type="submit" name="add" class="btn success p-x-md">Agregar adelanto de Efectivo</button>
         </div>
       </div>
      </form>
